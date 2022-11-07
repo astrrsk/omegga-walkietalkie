@@ -1,7 +1,32 @@
 {
   "name": "walkietalkie",
-  "description": "A typed safe Omegga plugin.",
+  "description": "Allows for tuning to frequency channels and talking via walkie walkies for long-ranged communication when in a minigame",
   "author": "astrsk",
   "config": {},
-  "commands": []
+  "commands": [
+    {
+      "name": "tune",
+      "description": "tunes to a given freqency",
+      "example": "/tune 69",
+      "args": [
+        {
+          "name": "frequency",
+          "description": "frequency number. 1 - 1000",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "w",
+      "description": "chat using your walkie talkie on a selected frequency",
+      "example": "/w the quick brown fox jumped over the lazy dog",
+      "args": [
+        {
+          "name": "message",
+          "description": "message to send out across the airwaves",
+          "required": true
+        }
+      ]
+    }
+  ]
 }
