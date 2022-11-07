@@ -5,7 +5,7 @@ start your repo name with "omegga-"
 
 example: https://github.com/astrsk/omegga-walkietalkie
 
-Your plugin will be installed via omegga install gh:astrsk/walkietalkie
+Your plugin will be installed via omegga install gh:astrrsk/walkietalkie
 
 -->
 
