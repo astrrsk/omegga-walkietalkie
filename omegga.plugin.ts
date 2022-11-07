@@ -54,7 +54,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
         fullMsg += v + ' ';
       });
 
-      const maxRange = 500; // Change to a config later on
+      const maxRange = 3600; // Change to a config later on
 
       // Get all players within range and broadcast to them
       const [sX, sY, sZ] = await speakerPlayer.getPosition();
