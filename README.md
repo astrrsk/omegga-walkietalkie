@@ -20,7 +20,7 @@ remove it entirely if it is unnecessary.
 
 ## Install
 
-`omegga install gh:astrsk/walkietalkie`
+`omegga install gh:astrrsk/walkietalkie`
 
 _TODO: more steps...?_
 
