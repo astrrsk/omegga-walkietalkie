@@ -63,6 +63,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
         //if (n.name == speaker) { return; } // Ignore self
 
         const plr = this.omegga.getPlayer(n.name);
+        console.log(`[${this.playerFreqs[speaker]}] ${speaker}: ${fullMsg}`);
 
         if (this.playerFreqs.hasOwnProperty(n.name) && this.playerFreqs[n.name] == this.playerFreqs[speaker]) {
           const [pX, pY, pZ] = await plr.getPosition();
