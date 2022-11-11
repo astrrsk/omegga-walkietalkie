@@ -54,7 +54,8 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
         fullMsg += v + ' ';
       });
 
-      const maxRange = 7200; // Change to a config later on
+      const maxRange = 21600; // Change to a config later on
+      const fuzzyRange = maxRange + 1200;
 
       // Get all players within range and broadcast to them
       const [sX, sY, sZ] = await speakerPlayer.getPosition();
@@ -65,6 +66,17 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
         const plr = this.omegga.getPlayer(n.name);
         console.log(`[${this.playerFreqs[speaker]}] ${speaker}: ${fullMsg}`);
 
+        // Generate fuzzy string
+        let fuzzyString = '';
+        for (const c of fullMsg) {
+          if (Math.floor(Math.random() * 2) == 1) {
+            fuzzyString += '*';
+          } else {
+            fuzzyString += c;
+          }
+        }
+
+
         if (this.playerFreqs.hasOwnProperty(n.name) && this.playerFreqs[n.name] == this.playerFreqs[speaker]) {
           const [pX, pY, pZ] = await plr.getPosition();
 
@@ -73,8 +85,12 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
           const z = sZ - pZ;
           const res = Math.hypot(x, y, z);
 
-          if (res <= maxRange) {
-            this.omegga.whisper(n.name, `[<color="e3dd32">${myFreq}MHz</>] ${speaker}: ${fullMsg}`);
+          if (res <= fuzzyRange) {
+            if (res <= maxRange) {
+              this.omegga.whisper(n.name, `[<color="e3dd32">${myFreq}MHz</>] ${speaker}: ${fullMsg}`);
+            } else { // Only within fuzzyRange
+              this.omegga.whisper(n.name, `[<color="e3dd32">${myFreq}MHz</>] ${speaker}: ${fuzzyString}`);
+            }
           }
         }
       });
