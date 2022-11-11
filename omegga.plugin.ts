@@ -55,7 +55,7 @@ export default class Plugin implements OmeggaPlugin<Config, Storage> {
       });
 
       const maxRange = 21600; // Change to a config later on
-      const fuzzyRange = maxRange + 1200;
+      const fuzzyRange = maxRange + 3600;
 
       // Get all players within range and broadcast to them
       const [sX, sY, sZ] = await speakerPlayer.getPosition();
